@@ -40,13 +40,8 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="unACL1CMBT9Os" name="MIDI Output">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="uNVcAeujAaw8y" name="createMIDIpackage" comment="Prepare MIDI package for transmit"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="uGQtWJb4XPPZq" name="transmitMsg" comment="Send message through the medium.&#10;"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="un6boOPqGKWnA" name="init" comment="create connection to medium and secure the transmit surounding"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="u0ulsXJDfTp5M" name="receiveMsg" comment="Take messages from host"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="u1OeXTbiEQO3N" name="setChannel" comment="set the communication channle" visibility="protected">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="ulA9lOk2MDtHA" name="channel" visibility="private" type="uAZus3HLSx70a" value=""/>
-        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="u7HySeJwijyly" name="Timer">
         <ownedAttribute xmi:type="uml:Property" xmi:id="u4JaIfUexaK6o" name="periode" comment="Time period in microseconds" visibility="private" type="uUMq0LtNketGa"/>
@@ -56,16 +51,60 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="uEI96hWetlAIz" name="timerNo" visibility="private" type="" value=""/>
         </ownedOperation>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="uN01s95T44Hn2" name="MIDI">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="u7M8aDbSzmyz4" name="msg" comment="Union of MIDI package " visibility="protected" type="ucjapd9NxlNpO"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="u5NvYBHEKjBWK" name="channel" comment="MIDI channel (1 .. 16)" visibility="protected" type="uAZus3HLSx70a" initialValue="1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="un6eF7VtxWd26" name="mode" comment="Mode of the MIDI channel&#10;1 poly on omni on&#10;2 mono on omni on&#10;3 poly on omni off&#10;4 mono on omni off" visibility="protected" type="uAZus3HLSx70a"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="uD0ZU2yPnEqzg" name="setChannel" comment="set the MIDI channel">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="ue560UWxbnP2S" name="channel" comment="sets the chnnel for the MIDI message" visibility="private" type="uAZus3HLSx70a" value=""/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="uv8EjnBko8uqd" name="getChannel" comment="get the MIDI channel">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="uIP5BRPqEyyYw" type="uAZus3HLSx70a" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="ulKU1CO8gQWbx" name="setMode" comment="set channel mode">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="ukcyGrsjjhsiT" name="mode" visibility="private" type="uAZus3HLSx70a" value=""/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="uO1EpBFkSaoJm" name="createMIDIpackage" comment="set mode of the channle">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="uE0tWSOTOkSVM" type="ucjapd9NxlNpO" direction="return"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="uHxDstC1EuG97" name="mode" visibility="private" type="uAZus3HLSx70a" value=""/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="uWu8bc0qb9LuC" name="createMIDIpackage" comment="creates a MIDI package">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="" type="ucjapd9NxlNpO" direction="return"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="u45LVvoC5Mhn7" name="note" visibility="private" type="uAZus3HLSx70a" value="" direction="inout"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="upnjYHRPdDLPo" name="velocity" visibility="private" type="uAZus3HLSx70a" value=""/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="uBLrCl6Gdxkg7" name="getMode" comment="get the current mode of the channel">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="u9ZRosruPKOJB" type="uAZus3HLSx70a" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="uMneWsSc1y83n" name="setStatus" comment="create the status byte" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="uhv8ZkNhdLAVa" name="type" visibility="private" type="uAZus3HLSx70a" value=""/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="uVcWiqVPuIi2u" name="setData" comment="set the databytes" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="uqfZNt8H06Pw5" name="type" visibility="private" type="uAZus3HLSx70a" value=""/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="uP4GUx3g2KLC2" name="byte0" visibility="private" type="uAZus3HLSx70a" value=""/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="uNEoZWn3fzuW6" name="byte1" visibility="private" type="uAZus3HLSx70a" value=""/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="ucjapd9NxlNpO" name="MIDIPACKAGE"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="uFpm294cOCn7N" name="" client="unACL1CMBT9Os" supplier="uN01s95T44Hn2"/>
       <xmi:Extension extender="umbrello">
         <diagrams resolution="96">
-          <diagram xmi.id="uCdzmqS0UYGSP" name="Klassendiagramm" type="1" documentation="" backgroundcolor="#ffffff" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" griddotcolor="#d3d3d3" linecolor="#990000" linewidth="0" textcolor="#000000" usefillcolor="1" showattribassocs="1" showatts="1" showattsig="1" showops="1" showopsig="1" showpackage="1" showpubliconly="0" showscope="1" showstereotype="2" localid="-1" showgrid="0" snapgrid="0" snapcsgrid="0" snapx="25" snapy="25" zoom="100" canvasheight="240" canvaswidth="651" isopen="1">
+          <diagram xmi.id="uCdzmqS0UYGSP" name="Klassendiagramm" type="1" documentation="" backgroundcolor="#ffffff" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" griddotcolor="#d3d3d3" linecolor="#990000" linewidth="0" textcolor="#000000" usefillcolor="1" showattribassocs="1" showatts="1" showattsig="1" showops="1" showopsig="1" showpackage="1" showpubliconly="0" showscope="1" showstereotype="2" localid="-1" showgrid="0" snapgrid="0" snapcsgrid="0" snapx="25" snapy="25" zoom="99.9425" canvasheight="240" canvaswidth="651" isopen="1">
             <widgets>
-              <classwidget xmi.id="unACL1CMBT9Os" localid="u2H62bNWQYKLW" textcolor="#000000" linecolor="#990000" linewidth="0" usefillcolor="1" usesdiagramfillcolor="0" usesdiagramusefillcolor="0" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" autoresize="1" x="50" y="50" width="164" height="91" isinstance="0" showstereotype="2" showoperations="1" showpubliconly="0" showopsigs="601" showpackage="1" showscope="1" showattributes="1" showattsigs="601"/>
-              <classwidget xmi.id="uakSaksLQbVdT" localid="u7iXf22tb7kkz" textcolor="#000000" linecolor="#990000" linewidth="0" usefillcolor="1" usesdiagramfillcolor="0" usesdiagramusefillcolor="0" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" autoresize="1" x="351" y="55" width="300" height="84" isinstance="0" showstereotype="2" showoperations="1" showpubliconly="0" showopsigs="601" showpackage="1" showscope="1" showattributes="1" showattsigs="601"/>
-              <classwidget xmi.id="u7HySeJwijyly" localid="uq5IxYzuq8jAK" textcolor="#000000" linecolor="#990000" linewidth="0" usefillcolor="1" usesdiagramfillcolor="0" usesdiagramusefillcolor="0" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" autoresize="1" x="235" y="184" width="220" height="56" isinstance="0" showstereotype="2" showoperations="1" showpubliconly="0" showopsigs="601" showpackage="1" showscope="1" showattributes="1" showattsigs="601"/>
+              <classwidget xmi.id="uN01s95T44Hn2" localid="uCFM2NygwMc8z" textcolor="#000000" linecolor="#990000" linewidth="0" usefillcolor="1" usesdiagramfillcolor="0" usesdiagramusefillcolor="0" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" autoresize="1" x="74.571" y="-66.4474" width="389" height="168" isinstance="0" showstereotype="2" showoperations="1" showpubliconly="0" showopsigs="601" showpackage="1" showscope="1" showattributes="1" showattsigs="601"/>
+              <classwidget xmi.id="uakSaksLQbVdT" localid="u7iXf22tb7kkz" textcolor="#000000" linecolor="#990000" linewidth="0" usefillcolor="1" usesdiagramfillcolor="0" usesdiagramusefillcolor="0" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" autoresize="1" x="110.409" y="245.266" width="300" height="84" isinstance="0" showstereotype="2" showoperations="1" showpubliconly="0" showopsigs="601" showpackage="1" showscope="1" showattributes="1" showattsigs="601"/>
+              <classwidget xmi.id="unACL1CMBT9Os" localid="u2H62bNWQYKLW" textcolor="#000000" linecolor="#990000" linewidth="0" usefillcolor="1" usesdiagramfillcolor="0" usesdiagramusefillcolor="0" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" autoresize="1" x="90.3466" y="145.991" width="94" height="49" isinstance="0" showstereotype="2" showoperations="1" showpubliconly="0" showopsigs="601" showpackage="1" showscope="1" showattributes="1" showattsigs="601"/>
+              <classwidget xmi.id="u7HySeJwijyly" localid="uq5IxYzuq8jAK" textcolor="#000000" linecolor="#990000" linewidth="0" usefillcolor="1" usesdiagramfillcolor="0" usesdiagramusefillcolor="0" fillcolor="#ffffc0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" autoresize="1" x="100.45" y="396.284" width="220" height="56" isinstance="0" showstereotype="2" showoperations="1" showpubliconly="0" showopsigs="601" showpackage="1" showscope="1" showattributes="1" showattsigs="601"/>
             </widgets>
             <messages/>
-            <associations/>
+            <associations>
+              <assocwidget xmi.id="uFpm294cOCn7N" localid="uMSw6Cj1ix7tW" textcolor="none" linecolor="#990000" linewidth="0" usefillcolor="1" usesdiagramfillcolor="1" usesdiagramusefillcolor="1" fillcolor="none" font="Sans Serif,9,-1,5,50,0,0,0,0,0" autoresize="1" seqnum="" type="502" widgetaid="unACL1CMBT9Os" widgetbid="uN01s95T44Hn2" indexa="0" totalcounta="0" indexb="0" totalcountb="0">
+                <linepath layout="Direct">
+                  <startpoint startx="158.448" starty="145.991"/>
+                  <endpoint endx="196.723" endy="101.553"/>
+                </linepath>
+              </assocwidget>
+            </associations>
           </diagram>
         </diagrams>
       </xmi:Extension>
@@ -76,7 +115,7 @@
     <packagedElement xmi:type="uml:Model" xmi:id="Entity_Relationship_Model" name="Entity Relationship Model"/>
   </uml:Model>
   <xmi:Extension extender="umbrello">
-    <docsettings viewid="uCdzmqS0UYGSP" documentation="" uniqueid="uMJgC3LJUNwra"/>
+    <docsettings viewid="uCdzmqS0UYGSP" documentation="" uniqueid="uE0tWSOTOkSVM"/>
     <listview>
       <listitem id="Views" type="800" open="1">
         <listitem id="Use_Case_View" type="802" open="1"/>
@@ -111,13 +150,24 @@
             <listitem id="uGkGRnXFtOlsu" type="815" open="0"/>
           </listitem>
           <listitem id="uCdzmqS0UYGSP" type="807" label="Klassendiagramm" open="0"/>
+          <listitem id="uN01s95T44Hn2" type="813" open="1">
+            <listitem id="u5NvYBHEKjBWK" type="814" open="0"/>
+            <listitem id="uWu8bc0qb9LuC" type="815" open="0"/>
+            <listitem id="uO1EpBFkSaoJm" type="815" open="0"/>
+            <listitem id="uv8EjnBko8uqd" type="815" open="0"/>
+            <listitem id="uBLrCl6Gdxkg7" type="815" open="0"/>
+            <listitem id="un6eF7VtxWd26" type="814" open="0"/>
+            <listitem id="u7M8aDbSzmyz4" type="814" open="0"/>
+            <listitem id="uD0ZU2yPnEqzg" type="815" open="0"/>
+            <listitem id="uVcWiqVPuIi2u" type="815" open="0"/>
+            <listitem id="ulKU1CO8gQWbx" type="815" open="0"/>
+            <listitem id="uMneWsSc1y83n" type="815" open="0"/>
+          </listitem>
           <listitem id="unACL1CMBT9Os" type="813" open="1">
-            <listitem id="uNVcAeujAaw8y" type="815" open="0"/>
             <listitem id="un6boOPqGKWnA" type="815" open="0"/>
-            <listitem id="u0ulsXJDfTp5M" type="815" open="0"/>
-            <listitem id="u1OeXTbiEQO3N" type="815" open="0"/>
             <listitem id="uGQtWJb4XPPZq" type="815" open="0"/>
           </listitem>
+          <listitem id="ucjapd9NxlNpO" type="813" open="1"/>
           <listitem id="u7HySeJwijyly" type="813" open="1">
             <listitem id="umA2B6AJqSVss" type="815" open="0"/>
             <listitem id="u4JaIfUexaK6o" type="814" open="0"/>
