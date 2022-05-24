@@ -23,6 +23,9 @@ Keyboard::~Keyboard()
 
 // Other methods
 //  
+OUTPUT_STATE Keyboard::debounce(int key, int input){
+	
+}
 
 void Keyboard::initAttributes()
 {
