@@ -21,6 +21,6 @@
 #### Keyboard 
 The keyboard consists of 88 keys connected in a diode matrix.[Diode matrix of the keyboard](https://doepfer.de/DIY/Matrix_88.gif)
 #### Microcontroller
-The chosen microcontroller is a [STM32G01RB](https://www.st.com/en/microcontrollers-microprocessors/stm32g071rb.html#documentation) on a [Nucleo development board](https://www.st.com/en/evaluation-tools/nucleo-g071rb.html).
+The chosen microcontroller is a [STM32G01RB](https://www.st.com/en/microcontrollers-microprocessors/stm32g071rb.html#documentation) on a [Nucleo development board](https://www.st.com/en/evaluation-tools/nucleo-g071rb.html). (HAL: [HAL Reference](https://www.st.com/resource/en/user_manual/dm00451807-description-of-stm32g0-hal-and-lowlayer-drivers-stmicroelectronics.pdf))
 
 
