@@ -1,8 +1,10 @@
+#include <MIDI.h>
 
 #ifndef MIDI_OUTPUT_H
 #define MIDI_OUTPUT_H
 
-class MIDI_Output
+
+class MIDI_Output : MIDI
 {
 public:
 	// Constructors/Destructors
@@ -25,8 +27,9 @@ public:
 	 * Send message through the medium.
 	 * 
 	 */
-	void transmitMsg()
+	void transmitMsg(int note, int velocity)
 	{
+		createMIDIpackage(note, velocity);
 	}
 
 
@@ -37,6 +40,7 @@ public:
 	{
 	}
 
+private:
 
 };
 

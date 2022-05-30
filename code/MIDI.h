@@ -2,6 +2,48 @@
 #ifndef MIDI_H
 #define MIDI_H
 
+enum MIDIcontrollerChange {
+	MODULATION =1, VOLUME =7, PAN = 10, EXPRESSION = 11, SUSTAIN = 64, RESET_ALL_CONTROLL = 121, ALL_NOTES_OFF = 123
+};
+
+enum STATUS {
+	NOTEOFF = 0x8, NOTEON, POLY_KEY_PRESURE, CONTROLL_CHANGE, PROG_CHANGE, CHANNEL_PRESSURE, PITCH_BEND
+};
+
+enum CHANNEL {
+	CH1, CH2, CH3, CH4, CH5, CH6, CH7, CH8, CH9, CH10, CH11, CH12, CH13, CH14, CH15, CH16
+};
+
+struct MIDIstatusByte
+{
+	STATUS statusType :4;
+	CHANNEL channel :4;
+};
+struct MIDIdataByte
+{
+	unsigned int dataBit :1;
+	unsigned char NoteNr_Velocity :7;
+};	
+
+struct MIDIstatusMsg 
+{
+	MIDIstatusByte Status;
+	MIDIdataByte data0;
+};
+
+struct MIDIdataMsg {
+	MIDIstatusByte Status;
+	MIDIdataByte data0;
+	MIDIdataByte data1;
+};
+
+union MIDIPACKAGE
+{
+	MIDIstatusMsg statusMsg;
+	MIDIdataMsg dataMsg;
+};
+
+
 class MIDI
 {
 public:
@@ -13,6 +55,9 @@ public:
 	 * Empty Constructor
 	 */
 	MIDI();
+	MIDI(CHANNEL channel){
+		setChannel(channel);
+	}
 
 	/**
 	 * Empty Destructor
@@ -25,7 +70,7 @@ public:
 	 * set the MIDI channel
 	 * @param  channel sets the chnnel for the MIDI message
 	 */
-	void setChannel(char channel)
+	void setChannel(CHANNEL channel)
 	{
 	}
 
@@ -66,8 +111,31 @@ public:
 	 */
 	MIDIPACKAGE createMIDIpackage(char note, char velocity)
 	{
+		MIDIPACKAGE tempMsg;
+
+		tempMsg.dataMsg.Status.statusType = NOTEON;
+		tempMsg.dataMsg.Status.channel = channel;
+		tempMsg.dataMsg.data0.dataBit = 0;
+		tempMsg.dataMsg.data0.NoteNr_Velocity = note;
+		tempMsg.dataMsg.data1.dataBit = 0;
+		tempMsg.dataMsg.data1.NoteNr_Velocity = velocity;
+	
+		return tempMsg;
 	}
 
+	MIDIPACKAGE createMIDIpackage(char note, char velocity)
+	{
+		MIDIPACKAGE tempMsg;
+
+		tempMsg.dataMsg.Status.statusType = NOTEON;
+		tempMsg.dataMsg.Status.channel = channel;
+		tempMsg.dataMsg.data0.dataBit = 0;
+		tempMsg.dataMsg.data0.NoteNr_Velocity = note;
+		tempMsg.dataMsg.data1.dataBit = 0;
+		tempMsg.dataMsg.data1.NoteNr_Velocity = velocity;
+
+		return tempMsg;
+	}
 
 	/**
 	 * get the current mode of the channel
@@ -84,7 +152,7 @@ protected:
 	// Union of MIDI package 
 	MIDIPACKAGE msg;
 	// MIDI channel (1 .. 16)
-	char channel;
+	CHANNEL channel;
 	// Mode of the MIDI channel
 	// 1 poly on omni on
 	// 2 mono on omni on
@@ -121,7 +189,7 @@ protected:
 	 * MIDI channel (1 .. 16)
 	 * @param value the new value of channel
 	 */
-	void setChannel(char value)
+	void setChannel(CHANNEL value)
 	{
 		channel = value;
 	}
@@ -174,15 +242,6 @@ protected:
 	}
 
 
-	/**
-	 * set the databytes
-	 * @param  type
-	 * @param  byte0
-	 * @param  byte1
-	 */
-	void setData(char type, char byte0, char byte1)
-	{
-	}
 
 private:
 	void initAttributes();
