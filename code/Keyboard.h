@@ -89,11 +89,11 @@ public:
 		int key = keyNo + bankNo * KEY_COUNT_BANK;
 	}
 
-	void setKeys(int MKportValue, int BRportValue, int keyNo, int bankNo)
+	void setKeys(int MKportValue, int BRportValue, int bankNo, int timerVal, int &timerOverFlowFlag)
 	{
-		int key = keyNo + bankNo * KEY_COUNT_BANK;
-		setKeyButtons(MKportValue, key, MK);
-		setKeyButtons(BRportValue, key, BR);
+		int key = bankNo * KEY_COUNT_BANK;
+		setKeyButtons(MKportValue, key, MK, timerVal, timerOverFlowFlag);
+		setKeyButtons(BRportValue, key, BR, timerVal, timerOverFlowFlag);
 	}
 
 	/**
@@ -124,15 +124,15 @@ private:
 	 * @param key number of the key
 	 * @param button type of button is pressed (MK, BR or in some implementations a third button per key)
 	 */
-	void setKeyButtons(int PortValue, int key, BUTTON button)
+	void setKeyButtons(int PortValue, int key, BUTTON button, int timerVal, int &timerOverFlowFlag)
 	{
 		int inputVal = 0;
 
 		for (int i = 0; i < 11; i++)
 		{
 			inputVal = (PortValue >> i) & 1;
-			debounce(key,inputVal,(BUTTON)button);
-			setTime(key, (BUTTON)button);
+			debounce(key + i,inputVal,(BUTTON)button);
+			setTime(key + i, (BUTTON)button, timerVal, timerOverFlowFlag);
 		}
 	}
 
@@ -184,7 +184,7 @@ private:
 	}
 
 
-	void setTime(int key, BUTTON button, int timerVal){
+	void setTime(int key, BUTTON button, int timerVal, int timerOverFlowFlag){
 		static OUTPUT_STATE keysStateOld[MAX_BUTTON_COUNT][KEYS];
 
 		if (keysStateOld[button][key] != keysState[button][key])
@@ -193,7 +193,7 @@ private:
 			{
 				keysTime[button][key] = timerVal;
 				keysStateOld[button][key] = HIGH;
-				getTimeDif(key);
+				getTimeDif(key, timerOverFlowFlag);
 			}
 			else
 			{
@@ -205,14 +205,31 @@ private:
 		}
 	}
 
-	void getTimeDif(int key){
+	void timerReset(int &timerOverFlowFlag) {
+		int reset = 0;
+
+		for (int key = 0; key < KEYS; key++)
+		{
+			if (timerOverFlowFlag && (keysState[BR][key] != keysState[MK][key]))
+			{
+				reset = 1;
+			}
+		}
+		
+		if (reset == 1)
+		{
+			timerOverFlowFlag = 0;
+		}
+	}
+
+	void getTimeDif(int key, int &timerOverFlowFlag){
 		if ((keysState[BR][key] == HIGH) && (keysState[MK][key] == HIGH))
 		{
 			
-			if (TimerOverFlowFlag == 1)
+			if (timerOverFlowFlag == 1)
 			{
 				keysTime[MAX_BUTTON_COUNT][key] = MAX_INT_32 - keysTime[BR][key] + keysTime[MK][key];
-				TimerOverFlowFlag = 0;
+				timerReset(timerOverFlowFlag);
 			}
 			else 
 			{
@@ -228,22 +245,6 @@ private:
 		keysTime[MAX_BUTTON_COUNT][key] = 0;
 	}
 
-	bool timerReset() {
-		int reset = 0;
-
-		for (int key = 0; key < KEYS; key++)
-		{
-			if (TimerOverFlowFlag && (keysState[BR][key] != keysState[MK][key]))
-			{
-				reset = 1;
-			}
-		}
-		
-		if (reset == 1)
-		{
-			resetTimOverFlowFlag();
-		}
-	}
 
 	void initAttributes();
 
