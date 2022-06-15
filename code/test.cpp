@@ -3,107 +3,161 @@
 #include <iostream>
 #include <chrono>
 #include <random> 
+#include <vector>
 
-#define TEST_CYCLES 10
+#define TEST_CYCLES 1
 #define TIMER_OF_CAP 8
+
+#define DEBUG
+
+struct sParams
+{
+    banks portMK; 
+    banks portBR;
+    int bank;
+    int time;
+};
+
 
 using namespace std;
 
 // log file
 ofstream output;
 
+// input file
+ifstream testcases;
+
 // test criteria
-int criteria;
+vector<sParams> criteria;
 
 // unit under test
 Keyboard testobject;
 
 // timer emulation
 int32_t timerCount = 0;
-int timerOverFlow = 0;
 
 
-// data register emulation
-uint32_t portMK = 0;
-uint32_t portBR = 0;
+
+void readTestParam(ifstream &testcaseFile)
+{
+    sParams tempParams;
+    string tempWord;
+    int tempInt;
+
+    cout << "lese Testparameter" << endl;
+
+    // read first line
+    testcaseFile >> tempWord;
+    testcaseFile >> tempWord;
+    testcaseFile >> tempWord;
+    testcaseFile >> tempWord;
+
+    while (testcaseFile >> tempInt);
+    {
+        tempParams.portMK.banks = tempInt;
+
+        if (testcaseFile >> tempInt)
+        {
+            tempParams.portBR.banks = tempInt;
+        }
+        else
+        {
+            tempParams.portBR.banks = 0;
+        }
+
+        if (testcaseFile >> tempInt)
+        {
+            tempParams.bank = tempInt;
+        }
+        else
+        {
+            tempParams.bank = 0;
+        }
+
+        if (testcaseFile >> tempInt)
+        {
+            tempParams.time = tempInt;
+        }
+        else
+        {
+            tempParams.time = 0;
+        }
+
+        criteria.push_back(tempParams);
+    }
+}
+
 
 int main(int argc, char const *argv[])
 {
+    int MIDIkeyInt;
 
     // start main()
+    #ifndef DEBUG
     output.open(argv[2]);
+    testcases.open(argv[1]);
+    #else
+    output.open("auswertung.txt");
+    testcases.open("zeiten.tst");
+    #endif
+
     // catch file error 
+    if (!testcases.is_open())
+    {
+        cout << "input file error" << endl;
+        return 0;
+    }
+
     if (!output.is_open())
     {
         cout << "output file error" << endl;
         return 0;
     }
+    
 
-    // catch input errors
-    try 
-    {
-        criteria = stoi(argv[1]);
-    }
-    catch(...)
-    {
-        cout << "criteria error" << endl;
-        return 0;
-    }
-    
-    
+    readTestParam(testcases);
+
     output << "Test keyboard\n-------------" << endl; 
-
-    output << "fill button states\n------------------" << endl;
-    output << "fill first button (MK)\n-----------------" << endl;
-    portMK = 0xFFFF;
-    output << "MK port reg value: " << hex << portMK << endl;
-     
 
     for (int i = 0; i < TEST_CYCLES; i++)
     {
-        // set button states (MK)
-        for (int bank = 0; bank < BANK_COUNT; bank++)
-        {
-            testobject.setKeys(portMK, portBR, bank, timerCount, timerOverFlow);
-        }
-        
-
         output << "Key values -> cycle " << i << "\n----------------------" << endl;
-        output << "BR port reg value: " << hex << portBR << endl;
 
-        for (int banks = 0; banks < BANK_COUNT; banks++)
+
+        for (int set = 0; set < criteria.size(); set++)
         {
-            for (int bankKeys = 0; bankKeys < KEY_COUNT_BANK; bankKeys++)
-            {
-                output << "bank No " << banks << ", key No " << bankKeys << ": ";
-                output << testobject.readKey(bankKeys, banks);
-            }
+            // set key with current criteria
+            testobject.setKeys(criteria[set].portMK.banks, criteria[set].portBR.banks, criteria[set].bank, criteria[set].time);
+            
+            // output 
+            output << "Set Nr. " << set + 1 << ":" << endl;
+            output << "  key No: " << criteria[set].bank << endl;
+            output << "  MK: " << hex << criteria[set].portMK.banks << endl;
+            output << "  BR: " << hex << criteria[set].portBR.banks << endl;
+            output << "  Time: " << criteria[set].time << endl;
+            output << "    Key time: " << testobject.readKey(criteria[set].portBR.banks, criteria[set].bank) << endl;
+      
+        }
 
-            // set buttons (BR)
-            if (portBR > (1 << 15))
+        output << endl;
+
+        do
+        {
+            MIDIkeyInt = testobject.messageIntFlag();
+            if (MIDIkeyInt == -1)
             {
-                portBR = 1;
+                output << "kein MIDI Trigger aktiv" << endl;
             }
             else
-            {            
-                portBR <<= 1;
-            }      
-            testobject.setKeys(portMK, portBR, banks, timerCount, timerOverFlow);
+            {
+                output << "  MIDI Trigger Key: " << MIDIkeyInt << endl;
+            }
         }
-
-        // controll timer 
-        timerCount++;
-
-        
-        // set timer over flow
-        if (timerCount > TIMER_OF_CAP)
-        {
-            timerOverFlow = 1;
-        }
-        
+        while (MIDIkeyInt != -1);
         
     }
     
+    output << "Test Ende" << endl;
     output.close();
 
     return 0;

@@ -2,6 +2,11 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
+#ifdef __linux__
+#include <stdint.h>
+#endif
+
+
 #define KEYS 88
 #define BANK_COUNT 11
 #define KEY_COUNT_BANK 8
@@ -27,7 +32,7 @@ union banks
 		unsigned int bank8:1;
 		unsigned int bank9:1;
 		unsigned int bank10:1;
-	};
+	} bits;
 	
 };
 
@@ -61,12 +66,12 @@ public:
 	/**
 	 * Empty Constructor
 	 */
-	Keyboard();
+	Keyboard(){}
 
 	/**
 	 * Empty Destructor
 	 */
-	virtual ~Keyboard();
+	virtual ~Keyboard(){}
 
 
 
@@ -87,13 +92,14 @@ public:
 	int readKey(int keyNo, int bankNo)
 	{
 		int key = keyNo + bankNo * KEY_COUNT_BANK;
+		return keysTime[MAX_BUTTON_COUNT][key];
 	}
 
-	void setKeys(int MKportValue, int BRportValue, int bankNo, int timerVal, int &timerOverFlowFlag)
+	void setKeys(int MKportValue, int BRportValue, int bankNo, int timerVal)
 	{
 		int key = bankNo * KEY_COUNT_BANK;
-		setKeyButtons(MKportValue, key, MK, timerVal, timerOverFlowFlag);
-		setKeyButtons(BRportValue, key, BR, timerVal, timerOverFlowFlag);
+		setKeyButtons(MKportValue, key, MK, timerVal);
+		setKeyButtons(BRportValue, key, BR, timerVal);
 	}
 
 	/**
@@ -106,6 +112,21 @@ public:
 		return port;
 	}
 
+	int messageIntFlag()
+	{
+		int retVal = -1;
+		for (int i = 0; i < KEY_COUNT_BANK * BANK_COUNT; i++)
+		{
+			if (sendMsg[i] == 1)
+			{
+				retVal = i;
+				sendMsg[i] = 0;
+				return retVal;
+			}
+		}
+		
+		return retVal;
+	}
 
 private:
 	// Private attributes
@@ -124,7 +145,7 @@ private:
 	 * @param key number of the key
 	 * @param button type of button is pressed (MK, BR or in some implementations a third button per key)
 	 */
-	void setKeyButtons(int PortValue, int key, BUTTON button, int timerVal, int &timerOverFlowFlag)
+	void setKeyButtons(int PortValue, int key, BUTTON button, int timerVal)
 	{
 		int inputVal = 0;
 
@@ -132,7 +153,7 @@ private:
 		{
 			inputVal = (PortValue >> i) & 1;
 			debounce(key + i,inputVal,(BUTTON)button);
-			setTime(key + i, (BUTTON)button, timerVal, timerOverFlowFlag);
+			setTime(key + i, (BUTTON)button, timerVal);
 		}
 	}
 
@@ -184,7 +205,7 @@ private:
 	}
 
 
-	void setTime(int key, BUTTON button, int timerVal, int timerOverFlowFlag){
+	void setTime(int key, BUTTON button, int timerVal){
 		static OUTPUT_STATE keysStateOld[MAX_BUTTON_COUNT][KEYS];
 
 		if (keysStateOld[button][key] != keysState[button][key])
@@ -193,7 +214,7 @@ private:
 			{
 				keysTime[button][key] = timerVal;
 				keysStateOld[button][key] = HIGH;
-				getTimeDif(key, timerOverFlowFlag);
+				getTimeDif(key);
 			}
 			else
 			{
@@ -205,31 +226,15 @@ private:
 		}
 	}
 
-	void timerReset(int &timerOverFlowFlag) {
-		int reset = 0;
 
-		for (int key = 0; key < KEYS; key++)
-		{
-			if (timerOverFlowFlag && (keysState[BR][key] != keysState[MK][key]))
-			{
-				reset = 1;
-			}
-		}
-		
-		if (reset == 1)
-		{
-			timerOverFlowFlag = 0;
-		}
-	}
 
-	void getTimeDif(int key, int &timerOverFlowFlag){
+	void getTimeDif(int key){
 		if ((keysState[BR][key] == HIGH) && (keysState[MK][key] == HIGH))
 		{
 			
-			if (timerOverFlowFlag == 1)
+			if (keysTime[BR][key] > keysTime[MK][key])
 			{
 				keysTime[MAX_BUTTON_COUNT][key] = MAX_INT_32 - keysTime[BR][key] + keysTime[MK][key];
-				timerReset(timerOverFlowFlag);
 			}
 			else 
 			{

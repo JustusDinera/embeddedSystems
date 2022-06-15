@@ -2,12 +2,13 @@
 
 // Constructors/Destructors
 //  
-
-Keyboard::Keyboard()
+Keyboard::Keyboard(){}
+/*
 {
 	initAttributes();
 }
 
+*/
 Keyboard::~Keyboard()
 {
 }
