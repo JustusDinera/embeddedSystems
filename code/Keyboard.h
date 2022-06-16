@@ -133,7 +133,7 @@ private:
 	//  
 	OUTPUT_STATE keysState[MAX_BUTTON_COUNT][KEYS];
 	int keysDebounceCount[MAX_BUTTON_COUNT][KEYS];
-	int keysTime[MAX_BUTTON_COUNT +1][KEYS];
+	uint32_t keysTime[MAX_BUTTON_COUNT +1][KEYS];
 	int sendMsg[KEYS];
 	// Private attribute accessor methods
 	//  
@@ -149,10 +149,11 @@ private:
 	{
 		int inputVal = 0;
 
-		for (int i = 0; i < 11; i++)
+		for (int i = 0; i < KEY_COUNT_BANK; i++)
 		{
 			inputVal = (PortValue >> i) & 1;
 			debounce(key + i,inputVal,(BUTTON)button);
+
 			setTime(key + i, (BUTTON)button, timerVal);
 		}
 	}
@@ -163,7 +164,7 @@ private:
 	 * @param button type of button is pressed (MK, BR or in some implementations a third button per key)
 	 * @return the value of key
 	 */
-	int getKeys(int key)
+	uint32_t getKeys(int key)
 	{
 		return keysTime[MAX_BUTTON_COUNT][key];
 	}
@@ -214,7 +215,7 @@ private:
 			{
 				keysTime[button][key] = timerVal;
 				keysStateOld[button][key] = HIGH;
-				getTimeDif(key);
+				setTimeDif(key);
 			}
 			else
 			{
@@ -226,13 +227,11 @@ private:
 		}
 	}
 
-
-
-	void getTimeDif(int key){
+	void setTimeDif(int key){
 		if ((keysState[BR][key] == HIGH) && (keysState[MK][key] == HIGH))
 		{
 			
-			if (keysTime[BR][key] > keysTime[MK][key])
+			if (keysTime[BR][key] < keysTime[MK][key])
 			{
 				keysTime[MAX_BUTTON_COUNT][key] = MAX_INT_32 - keysTime[BR][key] + keysTime[MK][key];
 			}
