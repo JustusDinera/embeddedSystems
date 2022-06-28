@@ -14,8 +14,9 @@ struct sParams
 {
     banks portMK; 
     banks portBR;
-    int bank;
-    int time;
+    uint bank;
+    uint time;
+    uint target;
 };
 
 
@@ -37,94 +38,45 @@ Keyboard testobject;
 int32_t timerCount = 0;
 
 
-/*
-void readTestParam(ifstream &testcaseFile)
-{
-    sParams tempParams;
-    string tempWord;
-    int tempInt;
-
-    cout << "lese Testparameter" << endl;
-
-    // read first line
-    testcaseFile >> tempWord;
-    testcaseFile >> tempWord;
-    testcaseFile >> tempWord;
-    testcaseFile >> tempWord;
-
-    while (testcaseFile >> tempInt);
-    {
-        tempParams.portMK.banks = tempInt;
-
-        if (testcaseFile >> tempInt)
-        {
-            tempParams.portBR.banks = tempInt;
-        }
-        else
-        {
-            tempParams.portBR.banks = 0;
-        }
-
-        if (testcaseFile >> tempInt)
-        {
-            tempParams.bank = tempInt;
-        }
-        else
-        {
-            tempParams.bank = 0;
-        }
-
-        if (testcaseFile >> tempInt)
-        {
-            tempParams.time = tempInt;
-        }
-        else
-        {
-            tempParams.time = 0;
-        }
-
-        criteria.push_back(tempParams);
-    }
-}
-*/
-void pushParams(int bank, int mk, int br, int time){
+void pushParams(uint bank, uint mk, uint br, uint time, uint target){
     sParams tempParams;
 
     tempParams.bank = bank;
     tempParams.portMK.banks = mk;
     tempParams.portBR.banks = br;
     tempParams.time = time;
+    tempParams.target = target;
     criteria.push_back(tempParams);
 }
 
 void iniCriteria(){
 
     // Case 1
-    pushParams(0,1,0,10);
+    pushParams(0,1,0,10, 0);
 
     // case 2
-    pushParams(0,1,1,50);
+    pushParams(0,1,1,50, 40);
 
     // case 3
-    pushParams(0,3,1,70);
+    pushParams(0,3,1,70, 0);
 
     // case 4
-    pushParams(0,3,3,80);
+    pushParams(0,3,3,80, 10);
 
     // case 5
-    pushParams(0,2,2,100);
+    pushParams(0,2,2,100, 0);
 
     //case 6
-    pushParams(0,2,2,120);
+    pushParams(0,2,2,120, 0);
 
     //case 7 
-    pushParams(0,0,0,140);
+    pushParams(0,0,0,140, 0);
 
     // case 8 
-    pushParams(0,4,0,200);
+    pushParams(0,4,0,0xFFFFFFF0, 0);
 
     // case 9
-    pushParams(0,4,4,110);
+    pushParams(0,4,4,110, 125);
 }
 
 void isInterrupt(int bank){
@@ -190,6 +142,8 @@ int main(int argc, char const *argv[])
             output << "  MK: 0x" << hex << criteria[set].portMK.banks << endl;
             output << "  BR: 0x" << hex << criteria[set].portBR.banks << endl;
             output << "  Time: " << dec << criteria[set].time << endl;
+            output << "  ------: ";
+            output << "  ------: ";
             
             for (int stady = 0; stady < MAX_DEBOUNCE_COUNT + 1; stady++)
             {

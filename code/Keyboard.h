@@ -73,15 +73,12 @@ public:
 	 */
 	virtual ~Keyboard(){}
 
-
-
 	/**
 	 * Create the internal timer, debounce variables
 	 */
 	void init()
 	{
 	}
-
 
 	/**
 	 * function to read a single key.

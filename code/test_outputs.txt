@@ -1,0 +1,385 @@
+---- KEY VALUE TEST ----
+Parameters of criteria0
+   Bank No. 0 hat die folgenden Keys aktiv: 
+   Bank No. 1 hat die folgenden Keys aktiv: 
+   Bank No. 2 hat die folgenden Keys aktiv: 
+      Vales in Key 01
+      Vales in Key 11
+      Vales in Key 21
+      Vales in Key 31
+      Vales in Key 41
+      Vales in Key 51
+      Vales in Key 61
+      Vales in Key 71
+   Bank No. 3 hat die folgenden Keys aktiv: 
+   Bank No. 4 hat die folgenden Keys aktiv: 
+   Bank No. 5 hat die folgenden Keys aktiv: 
+      Vales in Key 04547401
+      Vales in Key 14547401
+      Vales in Key 24547401
+      Vales in Key 34547401
+      Vales in Key 44547401
+      Vales in Key 54547401
+      Vales in Key 64547401
+      Vales in Key 74547401
+   Bank No. 6 hat die folgenden Keys aktiv: 
+   Bank No. 7 hat die folgenden Keys aktiv: 
+   Bank No. 8 hat die folgenden Keys aktiv: 
+   Bank No. 9 hat die folgenden Keys aktiv: 
+   Bank No. 10 hat die folgenden Keys aktiv: 
+Parameters of criteria1
+   Bank No. 0 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 1 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 2 hat die folgenden Keys aktiv: 
+   Bank No. 3 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 4 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 5 hat die folgenden Keys aktiv: 
+   Bank No. 6 hat die folgenden Keys aktiv: 
+   Bank No. 7 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 8 hat die folgenden Keys aktiv: 
+   Bank No. 9 hat die folgenden Keys aktiv: 
+   Bank No. 10 hat die folgenden Keys aktiv: 
+Parameters of criteria2
+   Bank No. 0 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 1 hat die folgenden Keys aktiv: 
+      Vales in Key 01307300129
+TEST PASSED!
+      Vales in Key 11307300129
+      Vales in Key 21307300129
+      Vales in Key 31307300129
+      Vales in Key 41307300129
+      Vales in Key 51307300129
+      Vales in Key 61307300129
+      Vales in Key 71307300129
+   Bank No. 2 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 3 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 4 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 5 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 6 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 7 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 8 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 9 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 10 hat die folgenden Keys aktiv: 
+TEST FAILED!
+Parameters of criteria3
+   Bank No. 0 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 1 hat die folgenden Keys aktiv: 
+      Vales in Key 014974
+TEST PASSED!
+      Vales in Key 114974
+      Vales in Key 214974
+      Vales in Key 314974
+      Vales in Key 414974
+      Vales in Key 514974
+      Vales in Key 614974
+      Vales in Key 714974
+   Bank No. 2 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 3 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+TEST PASSED!
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 4 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+TEST PASSED!
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 5 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 6 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+TEST PASSED!
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 7 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+TEST PASSED!
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 8 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+TEST PASSED!
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 9 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 10 hat die folgenden Keys aktiv: 
+TEST FAILED!
+Parameters of criteria4
+   Bank No. 0 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 1 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 2 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 3 hat die folgenden Keys aktiv: 
+      Vales in Key 064
+      Vales in Key 164
+TEST PASSED!
+      Vales in Key 264
+      Vales in Key 364
+      Vales in Key 464
+      Vales in Key 564
+      Vales in Key 664
+      Vales in Key 764
+   Bank No. 4 hat die folgenden Keys aktiv: 
+      Vales in Key 06
+      Vales in Key 16
+TEST PASSED!
+      Vales in Key 26
+      Vales in Key 36
+      Vales in Key 46
+      Vales in Key 56
+      Vales in Key 66
+      Vales in Key 76
+   Bank No. 5 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 6 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 7 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 8 hat die folgenden Keys aktiv: 
+TEST PASSED!
+   Bank No. 9 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 10 hat die folgenden Keys aktiv: 
+TEST FAILED!
+Parameters of criteria5
+   Bank No. 0 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 1 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+TEST PASSED!
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 2 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 3 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 4 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 5 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 6 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+TEST PASSED!
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 7 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+TEST PASSED!
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 8 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+TEST PASSED!
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 9 hat die folgenden Keys aktiv: 
+TEST FAILED!
+   Bank No. 10 hat die folgenden Keys aktiv: 
+TEST FAILED!
+Parameters of criteria6
+   Bank No. 0 hat die folgenden Keys aktiv: 
+   Bank No. 1 hat die folgenden Keys aktiv: 
+   Bank No. 2 hat die folgenden Keys aktiv: 
+      Vales in Key 01
+      Vales in Key 11
+      Vales in Key 21
+      Vales in Key 31
+      Vales in Key 41
+      Vales in Key 51
+      Vales in Key 61
+      Vales in Key 71
+   Bank No. 3 hat die folgenden Keys aktiv: 
+   Bank No. 4 hat die folgenden Keys aktiv: 
+      Vales in Key 01664447571
+      Vales in Key 11664447571
+      Vales in Key 21664447571
+      Vales in Key 31664447571
+      Vales in Key 41664447571
+      Vales in Key 51664447571
+      Vales in Key 61664447571
+      Vales in Key 71664447571
+   Bank No. 5 hat die folgenden Keys aktiv: 
+   Bank No. 6 hat die folgenden Keys aktiv: 
+   Bank No. 7 hat die folgenden Keys aktiv: 
+   Bank No. 8 hat die folgenden Keys aktiv: 
+   Bank No. 9 hat die folgenden Keys aktiv: 
+   Bank No. 10 hat die folgenden Keys aktiv: 
+Parameters of criteria7
+   Bank No. 0 hat die folgenden Keys aktiv: 
+   Bank No. 1 hat die folgenden Keys aktiv: 
+   Bank No. 2 hat die folgenden Keys aktiv: 
+   Bank No. 3 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 4 hat die folgenden Keys aktiv: 
+      Vales in Key 01701869940
+      Vales in Key 11701869940
+      Vales in Key 21701869940
+      Vales in Key 31701869940
+      Vales in Key 41701869940
+      Vales in Key 51701869940
+      Vales in Key 61701869940
+      Vales in Key 71701869940
+   Bank No. 5 hat die folgenden Keys aktiv: 
+   Bank No. 6 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 7 hat die folgenden Keys aktiv: 
+      Vales in Key 032767
+      Vales in Key 132767
+      Vales in Key 232767
+      Vales in Key 332767
+      Vales in Key 432767
+      Vales in Key 532767
+      Vales in Key 632767
+      Vales in Key 732767
+   Bank No. 8 hat die folgenden Keys aktiv: 
+   Bank No. 9 hat die folgenden Keys aktiv: 
+   Bank No. 10 hat die folgenden Keys aktiv: 
+Parameters of criteria8
+   Bank No. 0 hat die folgenden Keys aktiv: 
+   Bank No. 1 hat die folgenden Keys aktiv: 
+      Vales in Key 01
+      Vales in Key 11
+      Vales in Key 21
+      Vales in Key 31
+      Vales in Key 41
+      Vales in Key 51
+      Vales in Key 61
+      Vales in Key 71
+   Bank No. 2 hat die folgenden Keys aktiv: 
+   Bank No. 3 hat die folgenden Keys aktiv: 
+   Bank No. 4 hat die folgenden Keys aktiv: 
+      Vales in Key 04547401
+      Vales in Key 14547401
+      Vales in Key 24547401
+      Vales in Key 34547401
+      Vales in Key 44547401
+      Vales in Key 54547401
+      Vales in Key 64547401
+      Vales in Key 74547401
+   Bank No. 5 hat die folgenden Keys aktiv: 
+   Bank No. 6 hat die folgenden Keys aktiv: 
+   Bank No. 7 hat die folgenden Keys aktiv: 
+   Bank No. 8 hat die folgenden Keys aktiv: 
+   Bank No. 9 hat die folgenden Keys aktiv: 
+   Bank No. 10 hat die folgenden Keys aktiv: 
+      Vales in Key 01
+      Vales in Key 11
+      Vales in Key 21
+      Vales in Key 31
+      Vales in Key 41
+      Vales in Key 51
+      Vales in Key 61
+      Vales in Key 71
