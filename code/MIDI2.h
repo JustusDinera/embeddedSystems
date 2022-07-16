@@ -91,13 +91,7 @@ public:
 		return channel;
 	}
 
-	/**
-	 * set channel mode
-	 * @param  mode
-	 */
-	void setMode(char mode)
-	{
-	}
+
 
 	/**
 	 * set mode of the channle
