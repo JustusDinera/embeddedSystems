@@ -23,28 +23,28 @@ The keyboard consists of 88 keys connected in a diode matrix.[Diode matrix of th
 
 ##### Pinout
 Pin out on the flat band calbles (at the connector on the keayboard the pin numbers are inverted):
-|    | J3  | J4   | J2  |
-|----|-----|------|-----|
-| 1  | MD3 | MK10 | BR1 |
-| 2  | MD2 | BR10 | MK1 |
-| 3  | MD1 | MD10 | BR0 |
-| 4  | MD0 | MD10 | MK0 |
-| 5  | BK4 | BR9  |     |
-| 6  | MK4 | MD9  |     |
-| 7  | T7  | MK9  |     |
-| 8  | BR3 | BR8  |     |
-| 9  | T6  | MD8  |     |
-| 10 | MK3 | MK8  |     |
-| 11 | T5  | BR7  |     |
-| 12 | BR2 | MD7  |     |
-| 13 | T4  | MK7  |     |
-| 14 | MK2 | BR6  |     |
-| 15 | T3  | MD6  |     |
-| 16 | T2  | MK6  |     |
-| 17 | T1  | BR5  |     |
-| 18 | T0  | MD5  |     |
-| 19 | NC  | MK5  |     |
-| 20 | NC  | MD4  |     |
+|    |    | J3  | J4   | J2  |
+|----|----|-----|------|-----|
+| 20 | 1  | MD3 | MK10 | BR1 |
+| 19 | 2  | MD2 | BR10 | MK1 |
+| 18 | 3  | MD1 | MD10 | BR0 |
+| 17 | 4  | MD0 | MD10 | MK0 |
+| 16 | 5  | BK4 | BR9  |     |
+| 15 | 6  | MK4 | MD9  |     |
+| 14 | 7  | T7  | MK9  |     |
+| 13 | 8  | BR3 | BR8  |     |
+| 12 | 9  | T6  | MD8  |     |
+| 11 | 10 | MK3 | MK8  |     |
+| 10 | 11 | T5  | BR7  |     |
+| 9  | 12 | BR2 | MD7  |     |
+| 8  | 13 | T4  | MK7  |     |
+| 7  | 14 | MK2 | BR6  |     |
+| 6  | 15 | T3  | MD6  |     |
+| 5  | 16 | T2  | MK6  |     |
+| 4  | 17 | T1  | BR5  |     |
+| 3  | 18 | T0  | MD5  |     |
+| 2  | 19 | NC  | MK5  |     |
+| 1  | 20 | NC  | MD4  |     |
 
 
 #### Microcontroller
